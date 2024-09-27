@@ -5,103 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Responsive Navbar</title>
-    <style>
-        /* Basic Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    <link rel="stylesheet" href="/static/css/nav.css">
 
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-        }
 
-        /* Navbar Container */
-        nav {
-            background-color: #333;
-            color: white;
-            padding: 10px 20px;
-        }
-
-        /* Navbar Branding */
-        .navbar-brand {
-            font-size: 24px;
-            font-weight: bold;
-            color: white;
-            text-decoration: none;
-            margin-right: 20px;
-        }
-
-        /* Navbar Links */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .navbar ul {
-            list-style: none;
-            display: flex;
-        }
-
-        .navbar ul li {
-            margin-left: 20px;
-        }
-
-        .navbar ul li a {
-            text-decoration: none;
-            color: white;
-            padding: 10px 15px;
-            transition: background-color 0.3s;
-        }
-
-        .navbar ul li a:hover {
-            background-color: #555;
-            border-radius: 4px;
-        }
-
-        /* Responsive Menu (hamburger icon) */
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-        }
-
-        .hamburger span {
-            background-color: white;
-            height: 4px;
-            width: 25px;
-            margin: 3px 0;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .navbar ul {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-                background-color: #333;
-                position: absolute;
-                top: 60px;
-                left: 0;
-            }
-
-            .navbar ul.active {
-                display: flex;
-            }
-
-            .navbar ul li {
-                margin: 0;
-                text-align: center;
-            }
-
-            .hamburger {
-                display: flex;
-            }
-        }
-    </style>
+ 
 </head>
 <body>
 
@@ -111,8 +18,8 @@
             <ul>
                 <li><a href="#">Home</a></li>
                 <li><a href="#">About</a></li>
-                <li><a href="register.html">Sign Up</a></li>
-                <li><a href="login.html">Login</a></li>
+                <li><a href="http://127.0.0.1:8000/register/">Sign Up</a></li>
+                <li><a href="http://127.0.0.1:8000/login/">Login</a></li>
             </ul>
             <div class="hamburger" onclick="toggleMenu()">
                 <span></span>
@@ -121,6 +28,8 @@
             </div>
         </div>
     </nav>
+    {% block content %}
+    {% endblock content %}
 
     <script>
         function toggleMenu() {

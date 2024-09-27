@@ -9,12 +9,15 @@ from . import views
 from auth_app.api.views import registration_view, login_page_view
 
 urlpatterns = [
+    
+    path('',views.home_page_view, name='home'), 
     # JWT token endpoints
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     
     
-    path('register/', views.register_page_view, name='register_page'), 
+    path('register/', views.register_page_view, name='register_page'),
+    path('api/register/', views.registration_view, name='register_api'), 
     path('login/', views.login_page_view, name='login_page'),  # Render login page
     path('api/login/', views.login_view, name='login_api'),    # API for login
     

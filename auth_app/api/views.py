@@ -99,3 +99,6 @@ def dash_page_view(request):
 
 def register_page_view(request):
     return render(request,'register.html')
+
+def home_page_view(request):
+    return render(request, 'home.html')

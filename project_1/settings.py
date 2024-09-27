@@ -168,3 +168,11 @@ MEDIA_URL = '/media/'
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Static files (CSS, JavaScript, Images)
+STATIC_URL = '/static/'
+
+# Add this line to configure where static files are located
+STATICFILES_DIRS = [BASE_DIR / "static"]

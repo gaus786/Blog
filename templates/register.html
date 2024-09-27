@@ -4,93 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
-    <style>
-        /* General styles */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-
-        h1 {
-            text-align: center;
-            color: #333;
-        }
-
-        /* Container for the registration form */
-        form {
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            max-width: 400px;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        /* Styling the input fields */
-        input[type="text"],
-        input[type="email"],
-        input[type="password"] {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-
-        /* Button styling */
-        button {
-            padding: 10px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        button:hover {
-            background-color: #45a049;
-        }
-
-        /* Message styling */
-        #message {
-            margin-top: 10px;
-            font-size: 14px;
-            color: red;
-            text-align: center;
-        }
-
-        /* Responsive design for smaller screens */
-        @media (max-width: 600px) {
-            form {
-                padding: 15px;
-                width: 90%;
-            }
-
-            input[type="text"],
-            input[type="email"],
-            input[type="password"] {
-                font-size: 14px;
-            }
-
-            button {
-                font-size: 14px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="/static/css/register.css">
 </head>
 <body>
-    <h1>Register</h1>
+    
     <form onsubmit="register(event)">
+        <h1>Register</h1>
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" required><br><br>
 
@@ -102,7 +21,7 @@
 
         <button type="submit">Register</button>
 
-        <a href="" onclick=window.location.href = 'http://127.0.0.1:8000/login' >Login User</a>
+        <a href="http://127.0.0.1:8000/login/">Login</a>
         <p id="message"></p>
     </form>
 
@@ -116,7 +35,7 @@
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
 
-            const response = await fetch('http://127.0.0.1:8000/register/', {
+            const response = await fetch('http://127.0.0.1:8000/api/register/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -135,6 +54,7 @@
                 if (data.access && data.refresh) {
                     localStorage.setItem('access', data.access);
                     localStorage.setItem('refresh', data.refresh);
+                    window.location.href = 'http://127.0.0.1:8000/dash/'
                 }
             } else {
                 document.getElementById('message').textContent = data.error || 'Registration failed!';

@@ -1,0 +1,34 @@
+{% extends 'navbar.html' %}
+
+
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Blog</title>
+    <link rel="stylesheet" href="/static/css/home.css">
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Explore the World of Photography</h1>
+            <p>Discover breathtaking images, share your passion, and connect with fellow photographers.</p>
+            <button class="cta-button" id="learnMoreBtn">Learn More</button>
+        </div>
+    </header>
+
+    <!-- Additional content here -->
+    <section class="main-content">
+        <h2>Recent Posts</h2>
+        <!-- Blog posts preview will go here -->
+    </section>
+
+    <script src="/static/js/home.js"></script>
+</body>
+</html>
+{% endblock content %}
