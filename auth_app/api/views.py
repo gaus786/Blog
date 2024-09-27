@@ -1,6 +1,6 @@
 from rest_framework.decorators import api_view,permission_classes
 from rest_framework.response import Response
-# from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated
 from .serializer import UserSerializer
 from rest_framework import status
 from auth_app.models import User
@@ -93,7 +93,7 @@ def login_view(request):
         
 def login_page_view(request):
     return render(request, 'login.html')
-
+@permission_classes([IsAuthenticated])
 def dash_page_view(request):
     return render(request, 'dash.html')
 

@@ -6,6 +6,7 @@ from rest_framework import status
 from app1.models import Post_detail
 from django.contrib.auth import authenticate
 from auth_app.models import User
+from django.shortcuts import render
 
 
 @api_view(['POST'])
@@ -26,10 +27,7 @@ def get_all_posts(request):
     if request.method=='GET':
        
         posts = Post_detail.objects.all()
-        print(posts)
-      
         serializer=PostSerializer(posts,many=True)
-        print(f"serializer ${serializer.data}")
         return Response(serializer.data)
     
     
@@ -42,6 +40,10 @@ def get_user_posts(request,user):
         serializer=PostSerializer(posts,many=True)
         return Response(serializer.data)
     
+    
+    
+def getpost_page(request):
+    return render(request, 'dash.html')    
         
     
 
