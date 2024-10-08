@@ -17,5 +17,12 @@ class Post_detail(models.Model):
         return self.title
     
     
-
+# class Like(models.Model):
+#     post = models.ForeignKey(Post_detail, on_delete=models.CASCADE)
+#     user = models.ForeignKey(User, on_delete=models.CASCADE)
+#     created_at = models.DateTimeField(auto_now_add=True)
+#     like=models.IntegerField(default=0)
+    
+#     def __str__(self):
+#         return self.like
     

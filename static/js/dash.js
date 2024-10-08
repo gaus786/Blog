@@ -33,8 +33,7 @@ async function fetchPosts() {
     }
 }
 
-
-// Display posts in the container
+//display posts
 function displayPosts(posts) {
     const postsContainer = document.getElementById('posts-container');
     postsContainer.innerHTML = '';
@@ -43,9 +42,19 @@ function displayPosts(posts) {
         posts.forEach(post => {
             const postElement = document.createElement('div');
             postElement.classList.add('post');
+
+            // Ensure the image URL is correct, using the base URL if necessary
+            const imageUrl = `/media/images/img3.jpg`;
+            console.log(post.title);
+
             postElement.innerHTML = `
                 <h2>${post.title}</h2>
+                
+                  
+                <img src="${imageUrl}" alt="${post.title}" width="500" height="600">
+
                 <p>${post.caption}</p>
+
                 <div class="meta">Posted by ${post.user} on ${new Date(post.created_at).toLocaleDateString()}</div>
             `;
             postsContainer.appendChild(postElement);
@@ -55,9 +64,10 @@ function displayPosts(posts) {
     }
 }
 
+
 // Logout function
 function logout() {
     localStorage.removeItem('access');
     localStorage.removeItem('refresh');
-    window.location.href = '/login';
+    window.location.href = 'http://127.0.0.1:8000/login/';
 }
