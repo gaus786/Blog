@@ -44,19 +44,25 @@ function displayPosts(posts) {
             postElement.classList.add('post');
 
             // Ensure the image URL is correct, using the base URL if necessary
-            const imageUrl = `/media/images/img3.jpg`;
-            console.log(post.title);
+            const imageUrl = post.image;  // Assuming 'post.image' returns the correct path
 
             postElement.innerHTML = `
                 <h2>${post.title}</h2>
                 
-                  
                 <img src="${imageUrl}" alt="${post.title}" width="500" height="600">
-
                 <p>${post.caption}</p>
+
+                <!-- Like Button -->
+                <div class="like-container">
+                    <button class="like-button" onclick="likePost(${post.id})">
+                        <span class="heart">&#10084;</span> 
+                        <span id="like-count-${post.id}">${post.likes}</span> Like
+                    </button>
+                </div>
 
                 <div class="meta">Posted by ${post.user} on ${new Date(post.created_at).toLocaleDateString()}</div>
             `;
+
             postsContainer.appendChild(postElement);
         });
     } else {
@@ -65,9 +71,41 @@ function displayPosts(posts) {
 }
 
 
+
 // Logout function
 function logout() {
     localStorage.removeItem('access');
     localStorage.removeItem('refresh');
-    window.location.href = 'http://127.0.0.1:8000/login/';
+    window.location.href = 'http://127.0.0.1:8000/login';
+
+}
+
+
+
+
+
+
+async function likePost(postId) {
+    const response = await fetch('http://127.0.0.1:8000/api/like/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('access')}`,  // Include the JWT token
+
+        },
+        body: JSON.stringify({
+            post_id: postId
+            // user_id: localStorage.getItem('user_id')
+        })
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+        // Update the like count dynamically
+        const likeCountElement = document.getElementById(`like-count-${postId}`);
+        likeCountElement.textContent = data.likes;
+    } else {
+        console.error('Error:', data.error);
+    }
 }

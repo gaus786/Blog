@@ -81,3 +81,37 @@ nav ul li a:hover {
     color: #999;
     margin-top: 5px;
 }
+
+
+
+
+/* like button css */
+.like-container {
+    margin-top: 10px;
+}
+
+.like-button {
+    background-color: transparent;
+    border: none;
+    color: #FF0000;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.like-button .heart {
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+.like-button:hover {
+    color: #e60000;
+    transform: scale(1.1);
+    transition: transform 0.2s ease;
+}
+
+#like-count {
+    font-weight: bold;
+    margin-left: 5px;
+}

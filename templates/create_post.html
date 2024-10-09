@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <link rel="stylesheet" href="/static/css/create_post.css">
+
+    <title>Document</title>
+</head>
+<body>
+    <div class="create-post">
+       <form>
+        {% csrf_token %}
+    <div class="container">
+      <h1>Create a Post</h1>
+      <hr>
+  
+      <label for="title"><b>Title:</b></label>
+      <input type="text" placeholder="Enter Title" name="title" id="title" required>
+  
+      <label for="psw"><b>Caption:</b></label>
+      <input type="text" placeholder="Enter Caption" name="psw" id="caption" required>
+      
+      
+  <label for="file-upload"><b>Choose a file:</b></label>
+  <label class="file">
+    <input type="file" id="file" aria-label="File browser example">
+    <span class="file-custom"></span>
+  </label>
+  
+  
+      
+      <button type="submit" class="submitbtn">Create Post</button>
+    </div>
+  </form> 
+    </div>
+
+
+
+    <script src="/static/js/create_post.js"></script>
+    
+  </body>
+</html>

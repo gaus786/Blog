@@ -11,10 +11,16 @@ class Post_detail(models.Model):
     image = models.ImageField(upload_to='images/')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    likes =models.IntegerField(default=0)
+    likedby = models.ManyToManyField(User, related_name='liked_posts', blank=True) 
+    
     
     
     def __str__(self):
         return self.title
+
+    
+        
     
     
 # class Like(models.Model):
